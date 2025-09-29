@@ -45,9 +45,9 @@ const ChatList = () => {
     });
 
     setChatRooms(updatedChatRooms);
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loadUsers]); // messagesByRoom을 의존성 배열에서 제거하여 한 번만 실행되도록 합니다.
+  }, [loadUsers]); // messagesByRoom을 의존성 배열에서 제거 -> 한 번만 실행
 
   // 스토어의 chatRooms 사용 -> 마지막 업데이트 시간 순으로 정렬
   const sortedChatRooms = [...chatRooms].sort((a, b) => {

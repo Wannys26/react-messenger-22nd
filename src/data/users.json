@@ -17,16 +17,16 @@
   {
     "id": "user4",
     "name": "김태린",
-    "profile": "@/assets/svgs/chatroom/default-profile.svg"
+    "profile": "@/assets/svgs/chatroom/taerin-profile.svg"
   },
   {
     "id": "user5",
     "name": "박지민",
-    "profile": "@/assets/svgs/chatroom/default-profile.svg"
+    "profile": "@/assets/svgs/chatroom/jimin-profile.svg"
   },
   {
     "id": "user6",
     "name": "박어진",
-    "profile": "@/assets/svgs/chatroom/default-profile.svg"
+    "profile": "@/assets/svgs/chatroom/uhgin-profile.svg"
   }
 ]
