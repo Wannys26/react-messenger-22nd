@@ -58,9 +58,9 @@ export const getMessageMargin = (
   // 다른 사용자의 메시지면 12px
   if (currentMessage.userId !== prevMessage.userId) return 'mt-3';
 
-  // 같은 사용자, 같은 분이면 4px
+  // 같은 사용자, 같은 분이면 4px -> 6px 수정
   if (isSameMinute(currentMessage.timestamp, prevMessage.timestamp)) {
-    return 'mt-1';
+    return 'mt-[6px]';
   }
 
   // 같은 사용자, 다른 분이면 12px
