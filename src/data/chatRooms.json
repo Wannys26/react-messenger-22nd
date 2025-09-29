@@ -4,7 +4,7 @@
     "chatType": "individual",
     "participants": ["user1", "user2"],
     "chatName": "마밍",
-    "unreadCount": 2,
+    "unreadCount": 0,
     "lastUpdated": "2025-09-14T11:28:30.000Z",
     "messages": [
       {
@@ -88,7 +88,7 @@
     "chatType": "group",
     "participants": ["user2", "user3", "user4", "user5", "user6"],
     "chatName": "김가현, 김태린, 박지민, 박어진",
-    "unreadCount": 4,
+    "unreadCount": 0,
     "lastUpdated": "2025-09-27T15:37:00.000Z",
     "messages": [
       {

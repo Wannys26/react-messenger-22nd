@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import ChatListItem from "@/components/chatlist/ChatListItem";
 import { useUserStore } from '@/store/userStore';
+import { useChatStore } from '@/store/chatStore';
 import type { ChatRoom } from '@/types/chatlist';
 
 import chatRoomsData from '@/data/chatRooms.json';
@@ -11,20 +12,30 @@ import Searchbar from "@/components/chatlist/Searchbar";
 const ChatList = () => {
 
   const { users, loadUsers } = useUserStore();
+  const { chatRooms, setChatRooms } = useChatStore();
   
   // 현재 사용자 ID (기본값으로 user2 사용)
   const currentUserId = 'user2';
 
-  // 컴포넌트 마운트 시 사용자 데이터 로드
+  // 컴포넌트 마운트 시 사용자 데이터 및 채팅방 데이터 로드
   useEffect(() => {
     loadUsers();
-  }, [loadUsers]);
+    // 스토어의 chatRooms가 빈 상태 -> chatRooms.json에서 초기 데이터를 로드
+    if (chatRooms.length === 0) {
+      const initialChatRooms = (chatRoomsData as ChatRoom[]).map(room => {
+        const lastMessage = room.messages.length > 0 ? room.messages[room.messages.length - 1] : undefined;
+        return {
+          ...room,
+          lastMessage,
+          lastUpdated: lastMessage ? lastMessage.timestamp : room.lastUpdated,
+        };
+      });
+      setChatRooms(initialChatRooms);
+    }
+  }, [loadUsers, chatRooms, setChatRooms]);
 
-  // 채팅방을 마지막 업데이트 시간 순으로 정렬
-  const sortedChatRooms = [...(chatRoomsData as ChatRoom[])].map(room => ({
-    ...room,
-    lastMessage: room.messages.length > 0 ? room.messages[room.messages.length - 1] : undefined
-  })).sort((a, b) => {
+  // 스토어의 chatRooms 사용 -> 마지막 업데이트 시간 순으로 정렬
+  const sortedChatRooms = [...chatRooms].sort((a, b) => {
     return new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime();
   });
 
