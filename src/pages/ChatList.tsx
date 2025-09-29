@@ -3,6 +3,7 @@ import ChatListItem from "@/components/chatlist/ChatListItem";
 import { useUserStore } from '@/store/userStore';
 import { useChatStore } from '@/store/chatStore';
 import type { ChatRoom } from '@/types/chatlist';
+import type { Message } from '@/types/chat';
 
 import chatRoomsData from '@/data/chatRooms.json';
 import Navbar from "@/components/layout/Navbar";
@@ -12,7 +13,7 @@ import Searchbar from "@/components/chatlist/Searchbar";
 const ChatList = () => {
 
   const { users, loadUsers } = useUserStore();
-  const { chatRooms, setChatRooms } = useChatStore();
+  const { chatRooms, setChatRooms, messagesByRoom } = useChatStore();
   
   // 현재 사용자 ID (기본값으로 user2 사용)
   const currentUserId = 'user2';
@@ -20,19 +21,33 @@ const ChatList = () => {
   // 컴포넌트 마운트 시 사용자 데이터 및 채팅방 데이터 로드
   useEffect(() => {
     loadUsers();
-    // 스토어의 chatRooms가 빈 상태 -> chatRooms.json에서 초기 데이터를 로드
-    if (chatRooms.length === 0) {
-      const initialChatRooms = (chatRoomsData as ChatRoom[]).map(room => {
-        const lastMessage = room.messages.length > 0 ? room.messages[room.messages.length - 1] : undefined;
-        return {
-          ...room,
-          lastMessage,
-          lastUpdated: lastMessage ? lastMessage.timestamp : room.lastUpdated,
-        };
-      });
-      setChatRooms(initialChatRooms);
-    }
-  }, [loadUsers, chatRooms, setChatRooms]);
+
+    // chatRooms.json의 초기 데이터를 기반으로 chatRooms 상태를 재구성
+    const updatedChatRooms = (chatRoomsData as ChatRoom[]).map(room => {
+      // localStorage에서 복원된 메시지 목록을 가져옴
+      const persistedMessages = messagesByRoom[room.chatId];
+      
+      const finalMessages: Message[] = 
+        (persistedMessages && persistedMessages.length > 0)
+          ? persistedMessages
+          : room.messages;
+
+      const lastMessage: Message | undefined = 
+        finalMessages.length > 0 
+          ? finalMessages[finalMessages.length - 1] 
+          : undefined;
+
+      return {
+        ...room,
+        lastMessage,
+        lastUpdated: lastMessage ? lastMessage.timestamp : room.lastUpdated,
+      };
+    });
+
+    setChatRooms(updatedChatRooms);
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadUsers]); // messagesByRoom을 의존성 배열에서 제거하여 한 번만 실행되도록 합니다.
 
   // 스토어의 chatRooms 사용 -> 마지막 업데이트 시간 순으로 정렬
   const sortedChatRooms = [...chatRooms].sort((a, b) => {
