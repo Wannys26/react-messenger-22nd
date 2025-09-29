@@ -17,7 +17,7 @@ const ChatRoom = () => {
   
   // zustand store 사용
   const { users, loadUsers, getCurrentUserId, switchToUser, resetToDefault } = useUserStore();
-  const { getMessages, setMessages, sendMessage } = useChatStore();
+  const { getMessages, setMessages, sendMessage, updateUnreadCount } = useChatStore();
   
   const roomId = chatRoomId || '1';
   
@@ -36,6 +36,12 @@ const ChatRoom = () => {
 
   // 컴포넌트 마운트 시 초기화
   useEffect(() => {
+
+    // 채팅방에 입장하면 unreadCount를 0으로 설정
+    if (roomId) {
+      updateUnreadCount(roomId, 0);
+    }
+
     // 사용자 데이터 로드
     loadUsers();
     
@@ -52,7 +58,7 @@ const ChatRoom = () => {
     if (!hasExistingPerspective) {
       resetToDefault(roomId);
     }
-  }, [roomId, currentChatRoom, loadUsers, setMessages, messages.length, getCurrentUserId, resetToDefault]);
+  }, [roomId, currentChatRoom, loadUsers, setMessages, messages.length, getCurrentUserId, resetToDefault, updateUnreadCount]);
 
   // 채팅방 제목 생성
   const getChatRoomTitle = () => {
