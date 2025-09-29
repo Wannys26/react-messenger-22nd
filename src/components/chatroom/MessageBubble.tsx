@@ -86,7 +86,7 @@ const MessageBubble = ({
           
           {/* 시간 (같은 시간 그룹의 마지막 메시지에만 표시) */}
           {isLastInGroup && (
-            <span className="text-[11px] text-green-5 font-normal tracking-[-0.11px] whitespace-nowrap mb-[1px]">
+            <span className="text-caption3-r text-green-5 whitespace-nowrap">
               {time}
             </span>
           )}

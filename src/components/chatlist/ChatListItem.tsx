@@ -63,12 +63,12 @@ const ChatListItem = ({ chatRoom, users, currentUserId }: ChatListItemProps) => 
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
             {/* 채팅방 이름 */}
-            <span className="text-body2-m text-gray-7 truncate">
+            <span className="text-body2-sb text-gray-7 truncate">
               {getChatRoomName()}
             </span>
             
             {/* 시간 */}
-            <span className="text-caption2 text-gray-6 flex-shrink-0 ml-2">
+            <span className="text-caption3-r text-gray-6 flex-shrink-0 ml-2">
               {formatChatListTime(chatRoom.lastUpdated)}
             </span>
           </div>
