@@ -24,10 +24,10 @@ export const formatChatListTime = (timestamp: string): string => {
     return '어제';
   } else if (messageDate.getFullYear() === now.getFullYear()) {
     // 올해면 월/일만 표시
-    return `${messageDate.getMonth() + 1}/${messageDate.getDate()}`;
+    return `${messageDate.getMonth() + 1}월 ${messageDate.getDate()}일`;
   } else {
     // 작년 이전이면 년/월/일 표시
-    return `${messageDate.getFullYear()}/${messageDate.getMonth() + 1}/${messageDate.getDate()}`;
+    return `${messageDate.getFullYear()}년 ${messageDate.getMonth() + 1}월 ${messageDate.getDate()}일`;
   }
 };
 
