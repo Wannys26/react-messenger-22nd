@@ -4,6 +4,7 @@ import type { ChatRoom } from '@/types/chatlist';
 import { findUserById } from '@/utils/userUtils';
 import { formatChatListTime } from '@/utils/timeUtils';
 import DefaultProfile from '@/assets/svgs/chatroom/default-profile.svg';
+import GroupProfile from '@/components/chatlist/GroupProfile'; 
 
 interface ChatListItemProps {
   chatRoom: ChatRoom;
@@ -29,16 +30,11 @@ const ChatListItem = ({ chatRoom, users, currentUserId }: ChatListItemProps) => 
     }
   };
 
-  // 프로필 이미지 가져오기
-  const getProfileImage = () => {
-    if (chatRoom.chatType === 'individual') {
-      const otherParticipant = chatRoom.participants.find((id: string) => id !== currentUserId);
-      const partner = findUserById(users, otherParticipant || '');
-      return partner.profile || DefaultProfile;
-    } else {
-      // 단체 채팅은 기본 프로필 사용
-      return DefaultProfile;
-    }
+  // 개인 채팅 프로필 이미지 URL을 가져오는 함수
+  const getIndividualProfileImage = () => {
+    const otherParticipant = chatRoom.participants.find((id: string) => id !== currentUserId);
+    const partner = findUserById(users, otherParticipant || '');
+    return partner.profile || DefaultProfile;
   };
 
   // 마지막 메시지 가져오기
@@ -50,13 +46,23 @@ const ChatListItem = ({ chatRoom, users, currentUserId }: ChatListItemProps) => 
   return (
     <Link to={`/chatroom/${chatRoom.chatId}`}>
       <div className="flex items-center px-5 py-3 hover:bg-gray-1 cursor-pointer">
-        {/* 프로필 이미지 */}
-        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 mr-3">
-          <img
-            src={getProfileImage()}
-            alt="profile"
-            className="w-full h-full object-cover"
-          />
+        {/* 프로필 이미지 -> 개인 or 단체*/}
+        <div className="flex-shrink-0 mr-3">
+          {chatRoom.chatType === 'individual' ? (
+            <div className="w-12 h-12 rounded-full overflow-hidden">
+              <img
+                src={getIndividualProfileImage()}
+                alt="profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <GroupProfile
+              participants={chatRoom.participants}
+              users={users}
+              currentUserId={currentUserId}
+            />
+          )}
         </div>
 
         {/* 채팅방 정보 */}
