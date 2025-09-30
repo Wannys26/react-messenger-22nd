@@ -64,7 +64,7 @@ const MessageBubble = ({
           </button>
         )}
         
-        <div className={`flex items-end gap-1 ${isMe ? 'flex-row-reverse' : 'flex-row'}`}>
+        <div className={`flex items-end gap-[6px] ${isMe ? 'flex-row-reverse' : 'flex-row'}`}>
           {/* 메시지 버블 */}
           <div
             className={`px-3 pt-[7px] pb-[6px] break-all flex items-center ${
