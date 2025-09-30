@@ -81,7 +81,7 @@ const ChatListItem = ({ chatRoom, users, currentUserId }: ChatListItemProps) => 
           
           <div className="flex items-center justify-between">
             {/* 마지막 메시지 */}
-            <span className={`text-body3-r ${chatRoom.unreadCount > 0 ? 'text-gray-7' : 'text-gray-6'} truncate flex-1 mr-2`}>
+            <span className={`${chatRoom.unreadCount > 0 ? 'text-body3-m1 text-gray-7' : 'text-body3-r text-gray-6'} truncate flex-1 mr-2`}>
               {getLastMessage() || '대화를 시작해보세요'}
             </span>
             
