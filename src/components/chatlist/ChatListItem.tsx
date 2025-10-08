@@ -71,6 +71,9 @@ const ChatListItem = ({ chatRoom, users, currentUserId }: ChatListItemProps) => 
             {/* 채팅방 이름 */}
             <span className="text-body2-sb text-gray-7 truncate">
               {getChatRoomName()}
+              {chatRoom.chatType === 'group' && (
+                <span className="text-body2-m text-gray-5 ml-1"> {chatRoom.participants.length}</span>
+              )}
             </span>
             
             {/* 시간 */}
