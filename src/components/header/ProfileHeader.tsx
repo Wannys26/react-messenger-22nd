@@ -10,23 +10,23 @@ interface ProfileHeaderProps {
 
 const ProfileHeader = ({ onBack, rightActions }: ProfileHeaderProps) => {
   return (
-    <div className="flex items-center justify-between h-full px-[20px] py-[10px]">
+    <div className="flex items-center justify-between h-full px-[20px] py-[10px] bg-green-4">
       {/* 왼쪽 */}
       <div className="flex items-center">
         <button onClick={onBack}>
-          <img src={Close} alt="닫기" className="w-[22px] h-[22px]" />
+          <img src={Close} alt="닫기" className="w-[28px] h-[28px] brightness-0 invert" />
         </button>
       </div>
       
       {/* 오른쪽 */}
-      <div className="flex items-center gap-[12px]">
+      <div className="flex items-center gap-[14px]">
         {rightActions || (
           <>
             <button className='cursor-pointer'>
-              <img src={Image} alt="이미지" className="w-[22px] h-[22px]" />
+              <img src={Image} alt="이미지" className="w-[24px] h-[24px] brightness-0 invert" />
             </button>
             <button className='cursor-pointer'>
-              <img src={Setting} alt="설정" className="w-[22px] h-[22px]" />
+              <img src={Setting} alt="설정" className="w-[24px] h-[24px] brightness-0 invert" />
             </button>
           </>
         )}
