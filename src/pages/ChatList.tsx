@@ -5,7 +5,6 @@ import { useChatStore } from '@/store/chatStore';
 import type { ChatRoom } from '@/types/chatlist';
 
 import chatRoomsData from '@/data/chatRooms.json';
-import Navbar from "@/components/layout/Navbar";
 import ChatlistHeader from "@/components/header/ChatlistHeader";
 import Searchbar from "@/components/chatlist/Searchbar";
 
@@ -87,8 +86,6 @@ const ChatList = () => {
           </div>
         )}
       </div>
-
-      <Navbar />
     </div>
   );
 };
