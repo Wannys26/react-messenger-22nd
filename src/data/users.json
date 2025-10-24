@@ -2,31 +2,37 @@
   {
     "id": "user1",
     "name": "마밍",
-    "profile": "@/assets/svgs/chatroom/mom-profile.svg"
+    "profile": "@/assets/svgs/chatroom/mom-profile.svg",
+    "statusMessage": "엄마는 언제나 너를 응원해 💕"
   },
   {
     "id": "user2",
     "name": "나",
-    "profile": "@/assets/svgs/chatroom/default-profile.svg"
+    "profile": "@/assets/svgs/chatroom/default-profile.svg",
+    "statusMessage": "오늘도 화이팅!"
   },
   {
     "id": "user3",
     "name": "김가현",
-    "profile": "@/assets/svgs/chatroom/default-profile-green.svg"
+    "profile": "@/assets/svgs/chatroom/default-profile-green.svg",
+    "statusMessage": "공부하는 중..."
   },
   {
     "id": "user4",
     "name": "김태린",
-    "profile": "@/assets/svgs/chatroom/taerin-profile.svg"
+    "profile": "@/assets/svgs/chatroom/taerin-profile.svg",
+    "statusMessage": "행복한 하루 보내세요 ✨"
   },
   {
     "id": "user5",
     "name": "박지민",
-    "profile": "@/assets/svgs/chatroom/jimin-profile.svg"
+    "profile": "@/assets/svgs/chatroom/jimin-profile.svg",
+    "statusMessage": "커피 한잔의 여유 ☕"
   },
   {
     "id": "user6",
     "name": "박어진",
-    "profile": "@/assets/svgs/chatroom/uhgin-profile.svg"
+    "profile": "@/assets/svgs/chatroom/uhgin-profile.svg",
+    "statusMessage": "바쁘게 살고 있어요!"
   }
 ]
