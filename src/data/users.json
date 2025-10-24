@@ -34,5 +34,47 @@
     "name": "박어진",
     "profile": "@/assets/svgs/chatroom/uhgin-profile.svg",
     "statusMessage": "바쁘게 살고 있어요!"
+  },
+  {
+    "id": "user7",
+    "name": "아기감자",
+    "profile": "@/assets/svgs/chatroom/default-profile-green.svg",
+    "statusMessage": "새로운 시작 🌱"
+  },
+  {
+    "id": "user8",
+    "name": "찌우",
+    "profile": "@/assets/svgs/chatroom/default-profile-green.svg",
+    "statusMessage": "운동 열심히 하는 중 💪"
+  },
+  {
+    "id": "user9",
+    "name": "후니니",
+    "profile": "@/assets/svgs/chatroom/default-profile-green.svg",
+    "statusMessage": "여행 가고 싶다 ✈️"
+  },
+  {
+    "id": "user10",
+    "name": "아빵",
+    "profile": "@/assets/svgs/chatroom/father-profile.svg",
+    "statusMessage": "음악이 좋아 🎵"
+  },
+  {
+    "id": "user11",
+    "name": "도리",
+    "profile": "@/assets/svgs/chatroom/dori-profile.svg",
+    "statusMessage": "책 읽는 시간 📚"
+  },
+  {
+    "id": "user12",
+    "name": "황성미",
+    "profile": "@/assets/svgs/chatroom/default-profile-green.svg",
+    "statusMessage": "코딩하는 중 💻"
+  },
+  {
+    "id": "user13",
+    "name": "배진화",
+    "profile": "@/assets/svgs/chatroom/jinhwa-profile.svg",
+    "statusMessage": "맛집 탐방 중 🍽️"
   }
 ]
