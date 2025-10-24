@@ -114,6 +114,14 @@ html, body, #root {
   color: var(--color-primary);
 }
 
+@utility text-caption1-m1 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-primary);
+}
+
 @utility text-caption2 {
   font-size: var(--text-caption2);
   font-weight: var(--text-caption2--font-weight);
