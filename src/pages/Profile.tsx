@@ -7,6 +7,7 @@ import EditIcon from '@/assets/svgs/profile/edit-icon.svg';
 import MessageIcon from '@/assets/svgs/home/message-icon.svg';
 import SnsIcon from '@/assets/svgs/profile/sns-icon.svg';
 import { getProfileImage } from '@/utils/profileUtils';
+import { useCallModalStore } from '@/store/callModalStore';
 
 const Profile = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -14,6 +15,7 @@ const Profile = () => {
   const [user, setUser] = useState<User | null>(null);
   const currentUserId = "user2"; // 현재 로그인한 사용자
   const isMyProfile = userId === currentUserId;
+  const { openCallModal } = useCallModalStore();
 
   useEffect(() => {
     const foundUser = usersData.find(u => u.id === userId);
@@ -98,7 +100,7 @@ const Profile = () => {
 
               {/* 나의 SNS */}
               <a
-                href="https://line.me/ti/p/MykM9vezr7"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 cursor-pointer"
@@ -112,11 +114,11 @@ const Profile = () => {
           ) : (
             <>
               {/* 프로필 편집 -> 다른 사람 프로필에서는 음성통화 */}
-              <button className="flex flex-col items-center gap-2 cursor-pointer">
+              <button onClick={openCallModal} className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={EditIcon} alt="편집" className="w-7 h-7" />
                 </div>
-                <span className="text-caption1-m text-white">프로필 편집</span>
+                <span className="text-caption1-m text-white">음성 통화</span>
               </button>
 
               {/* 나의 메모 -> 다른 사람 프로필에서는 1:1 채팅 */}
@@ -124,15 +126,15 @@ const Profile = () => {
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={MessageIcon} alt="채팅" className="w-8 h-8 brightness-0 invert" />
                 </div>
-                <span className="text-caption1-m text-white">나의 메모</span>
+                <span className="text-caption1-m text-white">1:1 채팅</span>
               </button>
 
-              {/* 나의 SNS */}
+              {/* SNS */}
               <button className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={SnsIcon} alt="SNS" className="w-6 h-6" />
                 </div>
-                <span className="text-caption1-m text-white">나의 SNS</span>
+                <span className="text-caption1-m text-white">SNS</span>
               </button>
             </>
           )}

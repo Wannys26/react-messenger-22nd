@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import StatusBar from "@/components/statusbar/StatusBar";
 import Navbar from "@/components/layout/Navbar";
 import CallLoadingModal from "@/components/common/CallLoadingModal";
 import { Outlet } from "react-router-dom";
+import { useCallModalStore } from "@/store/callModalStore";
 
 const Layout = () => {
-    const [isCallModalOpen, setIsCallModalOpen] = useState(false);
     const location = useLocation();
+    const { isCallModalOpen, openCallModal, closeCallModal } = useCallModalStore();
 
     // Navbar를 표시하지 않을 경로들 (프로필 페이지, 채팅방)
     const hideNavbar = location.pathname.startsWith('/profile') || location.pathname.startsWith('/chatroom');
@@ -17,14 +17,6 @@ const Layout = () => {
         localStorage.clear();
         alert('보낸 메시지가 삭제되었습니다.');
         window.location.reload(); // 페이지를 새로고침하여 변경사항을 반영합니다.
-    };
-
-    const handleCallClick = () => {
-        setIsCallModalOpen(true);
-    };
-
-    const handleCloseCallModal = () => {
-        setIsCallModalOpen(false);
     };
 
     return(
@@ -44,11 +36,11 @@ const Layout = () => {
                     {/* 통화 로딩 모달 */}
                     <CallLoadingModal 
                         isOpen={isCallModalOpen} 
-                        onClose={handleCloseCallModal} 
+                        onClose={closeCallModal} 
                     />
                 </main>
                 {/* Navbar - 프로필 페이지 제외, 통화 모달 뜨는 동안 숨김 */}
-                {!hideNavbar && !isCallModalOpen && <Navbar onCallClick={handleCallClick} />}
+                {!hideNavbar && !isCallModalOpen && <Navbar onCallClick={openCallModal} />}
             </div>
 
             
