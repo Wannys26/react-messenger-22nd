@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "@/pages/Home"
 import ChatRoom from "@/pages/ChatRoom"
-import Layout from "@/components/layout/Layout"
 import ChatList from "@/pages/ChatList"
+import Profile from "@/pages/Profile"
+import Layout from "@/components/layout/Layout"
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/" element={<ChatList />} />
             <Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
+            <Route path="/profile/:userId" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
