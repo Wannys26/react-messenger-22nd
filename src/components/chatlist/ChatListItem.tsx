@@ -3,7 +3,7 @@ import type { User} from '@/types/chat';
 import type { ChatRoom } from '@/types/chatlist';
 import { findUserById } from '@/utils/userUtils';
 import { formatChatListTime } from '@/utils/timeUtils';
-import DefaultProfile from '@/assets/svgs/chatroom/default-profile.svg';
+import { getProfileImage } from '@/utils/profileUtils';
 import GroupProfile from '@/components/chatlist/GroupProfile'; 
 
 interface ChatListItemProps {
@@ -33,8 +33,7 @@ const ChatListItem = ({ chatRoom, users, currentUserId }: ChatListItemProps) => 
   // 개인 채팅 프로필 이미지 URL을 가져오는 함수
   const getIndividualProfileImage = () => {
     const otherParticipant = chatRoom.participants.find((id: string) => id !== currentUserId);
-    const partner = findUserById(users, otherParticipant || '');
-    return partner.profile || DefaultProfile;
+    return getProfileImage(otherParticipant || '');
   };
 
   // 마지막 메시지 가져오기

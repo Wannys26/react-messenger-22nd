@@ -5,6 +5,7 @@ import DateSeparator from '@/components/chatroom/DateSeparator';
 import { findUserById } from '@/utils/userUtils';
 import { formatTime } from '@/utils/timeUtils';
 import { shouldShowProfile, isLastInTimeGroup, getMessageMargin } from '@/utils/messageUtils';
+import { getProfileImage } from '@/utils/profileUtils';
 
 interface ChatAreaProps {
   messages: Message[];
@@ -54,7 +55,7 @@ const ChatArea = ({ messages, users, currentUserId, onUserNameClick}: ChatAreaPr
                 time={formatTime(message.timestamp)}
                 isMe={isMe}
                 userName={user.name}
-                userProfile={user.profile}
+                userProfile={getProfileImage(user.id)}
                 userId={user.id}
                 showProfile={showProfile}
                 isLastInGroup={isLastInGroup}

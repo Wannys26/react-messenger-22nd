@@ -1,6 +1,6 @@
 import type { User } from '@/types/chat';
 import { findUserById } from '@/utils/userUtils';
-import DefaultProfile from '@/assets/svgs/chatroom/default-profile.svg';
+import { getProfileImage } from '@/utils/profileUtils';
 
 interface GroupProfileProps {
   participants: string[];
@@ -17,13 +17,13 @@ const GroupProfile = ({ participants, users, currentUserId }: GroupProfileProps)
   // 프로필에 표시할 최대 4명의 사용자를 선택
   const profileUsers = otherParticipants.slice(0, 4);
 
-  // 4개 미만일 경우, 기본 프로필 이미지로 채워 2x2 그리드를 유지
+  // 4개 미만일 경우, placeholder로 채워 2x2 그리드를 유지
   const displayUsers: User[] = [];
   for (let i = 0; i < 4; i++) {
     if (profileUsers[i]) {
       displayUsers.push(profileUsers[i]);
     } else {
-      displayUsers.push({ id: `placeholder-${i}`, name: 'placeholder', profile: DefaultProfile });
+      displayUsers.push({ id: `placeholder-${i}`, name: 'placeholder', profile: '' });
     }
   }
 
@@ -32,7 +32,7 @@ const GroupProfile = ({ participants, users, currentUserId }: GroupProfileProps)
       {displayUsers.map((user) => (
         <img
           key={user.id}
-          src={user.profile}
+          src={getProfileImage(user.id)}
           alt={user.name}
           className="w-full h-full object-cover"
         />
