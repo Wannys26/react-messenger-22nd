@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Battery from '@/assets/svgs/statusbar/battery.svg';
 import Signal from '@/assets/svgs/statusbar/mobile-signal.svg';
 import Wifi from '@/assets/svgs/statusbar/wifi.svg'; 
 
 const StatusBar = () => {
-
+    const location = useLocation();
     const [time, setTime] = useState('');
+    
+    // Profile 페이지인지 확인
+    const isProfilePage = location.pathname.startsWith('/profile');
 
     useEffect(() => {
         const updateTime = () => {
@@ -22,16 +26,16 @@ const StatusBar = () => {
     },[])
 
     return (
-        <div className='w-full h-[47px] flex justify-between items-center pt-[14px] pr-[28.6px] pb-[12px] pl-[30px]'>
+        <div className={`w-full h-[47px] flex justify-between items-center pt-[14px] pr-[28.6px] pb-[12px] pl-[30px] ${isProfilePage ? 'bg-green-4' : 'bg-white'}`}>
             {/* 시간 */}
             <div className='mt-[1px]'>
-                <span className='text-base font-semibold text-gray-7'>{time}</span>    
+                <span className={`text-base font-semibold ${isProfilePage ? 'text-gray-0' : 'text-gray-7'}`}>{time}</span>    
             </div>
             {/* 우측 아이콘들 */}
             <div className='gap-[7px] flex justify-center items-center'>
-                <img src={Signal} alt="mobile signal"/>
-                <img src={Wifi} alt="wifi" />
-                <img src={Battery} alt="battery" />
+                <img src={Signal} alt="mobile signal" className={isProfilePage ? 'brightness-0 invert' : ''} />
+                <img src={Wifi} alt="wifi" className={isProfilePage ? 'brightness-0 invert' : ''} />
+                <img src={Battery} alt="battery" className={isProfilePage ? 'brightness-0 invert' : ''} />
             </div>
         </div>
     )
