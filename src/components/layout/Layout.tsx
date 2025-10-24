@@ -47,8 +47,8 @@ const Layout = () => {
                         onClose={handleCloseCallModal} 
                     />
                 </main>
-                {/* Navbar - 프로필 페이지 제외 */}
-                {!hideNavbar && <Navbar onCallClick={handleCallClick} />}
+                {/* Navbar - 프로필 페이지 제외, 통화 모달 뜨는 동안 숨김 */}
+                {!hideNavbar && !isCallModalOpen && <Navbar onCallClick={handleCallClick} />}
             </div>
 
             
