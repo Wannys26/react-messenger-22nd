@@ -81,7 +81,7 @@ const Profile = () => {
           {isMyProfile ? (
             <>
               {/* 프로필 편집 */}
-              <button className="flex flex-col items-center gap-2">
+              <button className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={EditIcon} alt="편집" className="w-7 h-7" />
                 </div>
@@ -89,7 +89,7 @@ const Profile = () => {
               </button>
 
               {/* 나의 메모 */}
-              <button className="flex flex-col items-center gap-2">
+              <button className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={MessageIcon} alt="메모" className="w-8 h-8 brightness-0 invert" />
                 </div>
@@ -101,7 +101,7 @@ const Profile = () => {
                 href="https://line.me/ti/p/MykM9vezr7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-2 cursor-pointer"
               >
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={SnsIcon} alt="SNS" className="w-6 h-6" />
@@ -112,7 +112,7 @@ const Profile = () => {
           ) : (
             <>
               {/* 프로필 편집 -> 다른 사람 프로필에서는 음성통화 */}
-              <button className="flex flex-col items-center gap-2">
+              <button className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={EditIcon} alt="편집" className="w-7 h-7" />
                 </div>
@@ -120,7 +120,7 @@ const Profile = () => {
               </button>
 
               {/* 나의 메모 -> 다른 사람 프로필에서는 1:1 채팅 */}
-              <button onClick={handleChatClick} className="flex flex-col items-center gap-2">
+              <button onClick={handleChatClick} className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={MessageIcon} alt="채팅" className="w-8 h-8 brightness-0 invert" />
                 </div>
@@ -128,7 +128,7 @@ const Profile = () => {
               </button>
 
               {/* 나의 SNS */}
-              <button className="flex flex-col items-center gap-2">
+              <button className="flex flex-col items-center gap-2 cursor-pointer">
                 <div className="w-[60px] h-[60px] rounded-[34px] bg-[#57CE82] bg-opacity-20 flex items-center justify-center">
                   <img src={SnsIcon} alt="SNS" className="w-6 h-6" />
                 </div>

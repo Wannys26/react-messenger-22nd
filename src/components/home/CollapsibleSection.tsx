@@ -28,11 +28,11 @@ const CollapsibleSection = ({ title, count, children, defaultOpen = true }: Coll
         <img
           src={isOpen ? ArrowUp : ArrowDown}
           alt={isOpen ? '접기' : '펼치기'}
-          className="w-5 h-5"
+          className="w-5 h-5 cursor-pointer"
         />
       </button>
 
-      {/* 섹션 내용 - 부드러운 애니메이션 */}
+      {/* 섹션 내용 (+부드럽게 펼쳐지도록 애니메이션 추가) */}
       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[2000px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
         {children}
       </div>
